@@ -1,0 +1,1 @@
+{"date":"2022-10-16 16:49:26,148","context-name":"product","thread":"HikariPool-1 housekeeper","level":"WARN","trace-id":"","span-id":"","parent-span-id":"","type":"com.zaxxer.hikari.pool.HikariPool","file":"HikariPool.java","method":"run","line":780,"message":"HikariPool-1 - Retrograde clock change detected (housekeeper delta=27s821ms), soft-evicting connections from pool."}

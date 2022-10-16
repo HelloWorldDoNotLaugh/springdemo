@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <springProperty scope="context" name="app-shortname" source="app-shortname" defaultValue="demo-default"/>
+    <springProperty scope="context" name="logging.pattern.level" source="logging.pattern.level" defaultValue="info"/>
+
+    <springProfile name="dev">
+        <property name="log.pattern.style.stdout" value='%white(%d{HH:mm:ss.SSS}) ${app-shortname} %yellow([%t]) %highlight(%-5le|%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-B3-ParentSpanId:-}|) %green(%logger{20}) %cyan((%M:%L\\)) - %m%n' />
+        <property name="log.pattern.style.sql" value='%white(%d{HH:mm:ss.SSS}) ${app-shortname} %highlight(|%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-B3-ParentSpanId:-}|) %magenta(EXE SQL -) %m%n' />
+    </springProfile>
+    <springProfile name="!dev">
+        <property name="log.pattern.style.stdout" value='{"date":"%date","context-name":"${app-shortname}","thread":"%thread","level":"%level","trace-id":"%X{X-B3-TraceId:-}","span-id":"%X{X-B3-SpanId:-}","parent-span-id":"%X{X-B3-ParentSpanId:-}","type":"%logger{50}","file":"%file","method":"%method","line":%line,"message":"%msg"}%n' />
+        <property name="log.pattern.style.sql" value='{"date":"%date","context-name":"%contextName","level":"%level","thread":"%thread","trace-id":"%X{X-B3-TraceId:-}","span-id":"%X{X-B3-SpanId:-}","parent-span-id":"%X{X-B3-ParentSpanId:-}","EXE_SQL":%msg}%n' />
+    </springProfile>
+</included>

@@ -1,0 +1,21 @@
+app-shortname: product
+server:
+  port: 8003
+#???????
+spring:
+  datasource:
+    username: root
+    password: password
+    url: jdbc:mysql://127.0.0.1:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: ${app-shortname}
+
+  profiles:
+    include: logging-${spring.profiles.active}
+    active: dev
+
+
+
+
+

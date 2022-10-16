@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <springProfile name="dev">
+        <springProperty scope="context" name="logging.file.path" source="logging.file.path" defaultValue="demo-log-default"/>
+
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>${logging.file.path}/%d{yyyy-MM-dd, aux}T%d{HH}_%i.log.zip</fileNamePattern>
+                <maxFileSize>50MB</maxFileSize>
+                <maxHistory>168</maxHistory><!-- 7*24 -->
+                <totalSizeCap>10GB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <pattern>{"date":"%date","context-name":"${app-shortname}","thread":"%thread","level":"%level","trace-id":"%X{X-B3-TraceId:-}","span-id":"%X{X-B3-SpanId:-}","parent-span-id":"%X{X-B3-ParentSpanId:-}","type":"%logger{50}","file":"%file","method":"%method","line":%line,"message":"%msg"}%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="${logging.pattern.level}">
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+</included>

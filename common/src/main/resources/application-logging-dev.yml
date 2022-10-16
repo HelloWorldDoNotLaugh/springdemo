@@ -1,0 +1,27 @@
+business-sys-env:
+  app-id: demo
+  service-id: ${app-shortname}
+
+logging:
+  pattern:
+    level: INFO
+  file:
+    path: /Users/helloworld/code/IdeaProjects/springdemo/demo-log/${spring.application.name}-${server.port}-log
+  level:
+    io.lettuce.core.protocol: OFF
+    com.baomidou.mybatisplus.core.injector: OFF
+    com.ulisesbocchio.jasyptspringboot: OFF
+
+demo-log:
+  filter:
+    console-common: com.wy.common.filter.LogBackCommonFilter
+    console-sql: com.wy.common.filter.LogBackSQLFilter
+
+
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+
+    <contextName>product</contextName>
+
+    <include resource="logback-props.xml"/>
+    <include resource="logback-STDOUT.xml"/>
+    <include resource="logback-STDOUT-SQL.xml"/>
+    <include resource="logback-FILE.xml"/>
+
+</configuration>

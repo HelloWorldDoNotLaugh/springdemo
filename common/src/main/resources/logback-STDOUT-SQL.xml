@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <springProperty scope="context" name="demo-log.filter.console-sql" source="demo-log.filter.console-sql" defaultValue="com.wy.common.filter.StartUpFilter"/>
+
+    <appender name="STDOUT-SQL" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="${demo-log.filter.console-sql}"/>
+        <encoder>
+            <pattern>${log.pattern.style.sql}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${logging.pattern.level}">
+        <appender-ref ref="STDOUT-SQL"/>
+    </root>
+</included>

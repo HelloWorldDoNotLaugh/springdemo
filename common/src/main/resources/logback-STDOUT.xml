@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <springProperty scope="context" name="demo-log.filter.console-common" source="demo-log.filter.console-common" defaultValue="ch.qos.logback.classic.filter.LevelFilter"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="${demo-log.filter.console-common}"/>
+        <encoder>
+            <pattern>${log.pattern.style.stdout}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="${logging.pattern.level}">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</included>
